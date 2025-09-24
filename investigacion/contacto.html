@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!---->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacto de los investigadores">
+    <meta name="author" content="URIEL">
+    <meta name="keywords" content="Progra Web contacto investigadores">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css\main.css">
+
+</head>
+
+<body>
+    <header class="index-header">
+        <img src="imagenes/perezoso.jpeg" alt="" width="90" height="90"  >
+        <h1 id="encabezado">LAZY RESEARCH</h1> <!--Style se usa para poner estilos en linea-->
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="mienbros.php">Mienbros</a></li>
+            <li><a href="invetigaciones.php">Investigaciones</a></li> <!--entrelazado de las diferentes pantallas-->
+            <li><a href="contacto.php">Contacto</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Contacto</h1>
+    </header>
+    <main>
+        <h3>Red de Investigadores del TecNM</h3>
+        <p>Tel:<a href="tel:+527296281542">+52 729 628 1542</a>
+            <br>
+            Email: <a href="mailto:pemex.iruo@gmail.com">pemex.iruo@gmail.com</a>
+        </p>
+        <form action="enviarmensaje.php" method="get"> <!--"action", es un atributo-->
+            <label for="nommbre">Escriba su nombre:</label>
+            <input type="text" name="nombre" maxlength="30" minlength="3">
+            <label for="Tipo">Tipo de comentario</label>
+            <select name="Tipo" id="">
+                <option value="comentario">Comentario</option>
+                <option value="queja">Queja</option>
+                <option value="inscripcion">Inscripcion</option>
+                <option value="otro">Otro</option>
+            </select>
+            <label for="mensaje">Escriba el mensaje:</label>
+            <textarea name="mensajeenelmain" id="" rows="6" cols="40"></textarea>
+            <input type="submit" name="Enviar" value="Enviar">
+        </form>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

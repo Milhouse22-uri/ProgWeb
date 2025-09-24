@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Mi Primer Sitio Web</title>
+    <link rel="stylesheet" href="css\main.css">
+
+</head>
+<body>
+    <header class="index-header">
+        <img src="imagenes/perezoso.jpeg" alt="" width="90" height="90"  >
+        <h1 id="encabezado">LAZY RESEARCH</h1> <!--Style se usa para poner estilos en linea-->
+    </header>
+    <nav>
+        <ul class="menu-clase purple">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="mienbros.php">Miembros</a></li>
+            <li><a href="invetigaciones.php">Investigaciones</a></li>  <!--entrelazado de las diferentes pantallas-->
+            <li><a href="contacto.php">Contacto</a></li>
+        </ul>
+    </nav>
+    <main class="cards-container">
+        <div class="inv-1">
+            <div class="img inv 1"><img src="imagenes/autoelec.jpeg" alt="" width="140" height="100"></div>
+            <div class="inf inv 1">
+                <h2>Investigacion y datos sobre vehiculos eléctricos</h2>
+                <article>
+                    La conducción sostenible va más allá de elegir el coche adecuado. Descubre información 
+                    sobre todos los aspectos, desde los valores de reventa y 
+                    las tasas de sustitución de baterías hasta las ventajas y 
+                    desventajas de cada tipo de vehículo ecológico.
+                </article>
+                <footer>
+                    <a href="invetigaciones.php" >Leer mas...</a>
+                </footer>
+            </div>    
+        </div>
+        <div class="inv-2">
+            <div><img src="imagenes/jdm.jpeg" alt="" width="140" height="100"></div> 
+            <div>
+                <h2>¿Qué son los coches JDM?</h2>
+                <article>
+                    Si alguna vez has visto un Toyota Supra con matrícula japonesa o 
+                    un Civic EG luciendo un alerón GT, sabrás que los JDM tienen un
+                    aura especial. Japanese Domestic Market es la etiqueta que reciben
+                    los modelos diseñados para Japón y que, por su robustez,
+                    estilo y margen de personalización, han conquistado aficionados.
+                </article>
+                <footer>
+                    <a href="invetigaciones.php" >Leer mas...</a>
+                </footer>
+            </div>  
+        </div>
+        <div class="inv-3">
+                <div><img src="imagenes/juan.jpeg" alt="" width="100" height="100"></div> 
+                <div>
+                    <h2>Conoce a Uriel Alejandro</h2>
+                    <article>
+                        Uriel Alejandro es un DBA con una pasión por la investigación y la innovación.
+                        Con una sólida formación académica y una experiencia significativa en el campo,
+                        Uriel ha contribuido a numerosos proyectos de investigación que han tenido un impacto
+                        positivo en la comunidad académica y más allá.
+                    </article>
+                    <footer>
+                        <a href="mienbros.php" >Leer mas...</a>
+                    </footer>
+                </div>
+        </div>
+    </main>
+    <footer>
+        <nav>
+            <ul class="menu clase vermillion">
+                <li><a href="contacto.php">Contactos</a></li>
+            </ul> 
+        </nav>
+        <div>Redes sociales</div>
+    </footer>
+</body>
+</html>
