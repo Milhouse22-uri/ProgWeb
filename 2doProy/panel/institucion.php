@@ -6,19 +6,32 @@ $data = array();
 include_once("./views/header.php");
 switch ($action){
     case 'create':
-        $data['institucion']=$_POST['institucion'];
-        $data['logotipo']=$_POST['logotipo'];
-        $row = $app-> create($data);
-        echo $row;
+        if(isset($_POST['enviar'])){
+            $data['institucion']=$_POST['institucion'];
+            $data['logotipo']=$_POST['logotipo'];
+            $row = $app-> create($data);
+            $data=$app->read();
+            include_once("./views/institucion/index.php");
+        }else{
+            include_once("./views/institucion/_form.php");
+        }
         break;
 
 
     case 'update':
-        $data['institucion']=$_POST['institucion'];
+        if(isset($_POST['enviar'])){
+          $data['institucion']=$_POST['institucion'];
         $data['logotipo']=$_POST['logotipo'];
-        $id = $_POST['id'];
+        $id = $_GET['id'];
         $row = $app-> update($data,$id);
-        echo $row;
+         $data=$app->read();
+            include_once("./views/institucion/index.php");
+        }else{
+            $id = $_GET['id'];
+            $data = $app->readOne($id);
+            include_once("./views/institucion/_form_update.php");
+        }
+        
         break;
 
     case 'delete':

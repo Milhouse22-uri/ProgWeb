@@ -26,7 +26,7 @@ class Institucion extends Sistema {
         $sth = $this->_DB->prepare("SELECT * FROM institucion WHERE id_institucion = :id_institucion");
         $sth->bindParam(":id_institucion", $id, PDO::PARAM_INT);
         $sth->execute();
-        $data = $sth->fetch();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
 
