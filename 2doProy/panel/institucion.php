@@ -10,6 +10,15 @@ switch ($action){
             $data['institucion']=$_POST['institucion'];
             $data['logotipo']=$_POST['logotipo'];
             $row = $app-> create($data);
+            if($row){
+                $alerta['mensaje'] = "Institucion creada correctamente";
+                $alerta['tipo'] = "success";
+                include_once("./views/alert.php");
+            }else{
+                $alerta['mensaje'] = "La institucion no fue dada de alta";
+                $alerta['tipo'] = "danger";
+                include_once("./views/alert.php"); 
+            }
             $data=$app->read();
             include_once("./views/institucion/index.php");
         }else{
@@ -24,7 +33,16 @@ switch ($action){
         $data['logotipo']=$_POST['logotipo'];
         $id = $_GET['id'];
         $row = $app-> update($data,$id);
-         $data=$app->read();
+        if($row){
+                $alerta['mensaje'] = "Institucion modificada correctamente";
+                $alerta['tipo'] = "success";
+                include_once("./views/alert.php");
+            }else{
+                $alerta['mensaje'] = "La institucion no fue modificada";
+                $alerta['tipo'] = "danger";
+                include_once("./views/alert.php"); 
+            }
+        $data=$app->read();
             include_once("./views/institucion/index.php");
         }else{
             $id = $_GET['id'];
@@ -37,7 +55,16 @@ switch ($action){
     case 'delete':
         if (isset($_GET['id'])){
             $id = $_GET['id'];
-            $row = $app-> delete($id);     
+            $row = $app-> delete($id);   
+            if($row){
+                $alerta['mensaje'] = "Institucion eliminada correctamente";
+                $alerta['tipo'] = "success";
+                include_once("./views/alert.php");
+            }else{
+                $alerta['mensaje'] = "La institucion no fue eliminada";
+                $alerta['tipo'] = "danger";
+                include_once("./views/alert.php"); 
+            }  
          }
         $data=$app->read();
         include_once("./views/institucion/index.php");
