@@ -8,6 +8,7 @@
         <label for="logotipo" class="form-label">Logotipo</label>
         <input type="text" class="form-control" id="logotipo" name="logotipo" value="<?php echo $data['logotipo']; ?>" placeholder="logo.png">
     </div>
+    
     <div class="mb-3">
         <input type="submit" class="btn btn-success" id="enviar" name="enviar" value="Guardar">
     </div>

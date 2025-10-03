@@ -29,21 +29,21 @@ switch ($action){
 
     case 'update':
         if(isset($_POST['enviar'])){
-          $data['institucion']=$_POST['institucion'];
-        $data['logotipo']=$_POST['logotipo'];
-        $id = $_GET['id'];
-        $row = $app-> update($data,$id);
-        if($row){
-                $alerta['mensaje'] = "Institucion modificada correctamente";
-                $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
-            }else{
-                $alerta['mensaje'] = "La institucion no fue modificada";
-                $alerta['tipo'] = "danger";
-                include_once("./views/alert.php"); 
-            }
-        $data=$app->read();
-            include_once("./views/institucion/index.php");
+            $data['institucion']=$_POST['institucion'];
+            $data['logotipo']=$_POST['logotipo'];
+            $id = $_GET['id'];
+            $row = $app-> update($data,$id);
+            if($row){
+                    $alerta['mensaje'] = "Institucion modificada correctamente";
+                    $alerta['tipo'] = "success";
+                    include_once("./views/alert.php");
+                }else{
+                    $alerta['mensaje'] = "La institucion no fue modificada";
+                    $alerta['tipo'] = "danger";
+                    include_once("./views/alert.php"); 
+                }
+            $data=$app->read();
+                include_once("./views/institucion/index.php");
         }else{
             $id = $_GET['id'];
             $data = $app->readOne($id);

@@ -1,15 +1,14 @@
 <?php
 require_once "sistema.php";
 
-class Institucion extends Sistema {
+class Tratamiento extends Sistema {
     function create($data){
         $this->connect();
         $this->_DB->beginTransaction();
         try {
-            $sql = "INSERT INTO institucion (institucion, logotipo) VALUES (:institucion, :logotipo)";
+            $sql = "INSERT INTO tratamiento (tratamiento) VALUES (:tratamiento)";
             $sth = $this->_DB->prepare($sql);
-            $sth->bindParam(":institucion", $data['institucion'], PDO::PARAM_STR);
-            $sth->bindParam(":logotipo", $data['logotipo'], PDO::PARAM_STR);
+            $sth->bindParam(":tratamiento", $data['tratamiento'], PDO::PARAM_STR);
             $sth->execute();
             $affected_rows = $sth->rowCount();
             $this->_DB->commit();
@@ -22,7 +21,7 @@ class Institucion extends Sistema {
 
     function read(){
         $this->connect();
-        $sth = $this->_DB->prepare("SELECT * FROM institucion");
+        $sth = $this->_DB->prepare("SELECT * FROM tratamiento");
         $sth->execute();
         $data = $sth->fetchAll();
         return $data;
@@ -30,8 +29,8 @@ class Institucion extends Sistema {
 
     function readOne($id){ 
         $this->connect();
-        $sth = $this->_DB->prepare("SELECT * FROM institucion WHERE id_institucion = :id_institucion");
-        $sth->bindParam(":id_institucion", $id, PDO::PARAM_INT);
+        $sth = $this->_DB->prepare("SELECT * FROM tratamiento WHERE id_tratamiento = :id_tratamiento");
+        $sth->bindParam(":id_tratamiento", $id, PDO::PARAM_INT);
         $sth->execute();
         $data = $sth->fetch(PDO::FETCH_ASSOC); //
         return $data;
@@ -45,13 +44,12 @@ class Institucion extends Sistema {
             $this->connect();
             $this->_DB->beginTransaction();
             try{
-                $sql = "UPDATE institucion 
-                        SET institucion = :institucion,logotipo = :logotipo 
-                        WHERE id_institucion = :id_institucion";
-                $sth = $this->_DB-> prepare($sql);
-                $sth->bindParam(":institucion", $data['institucion'], PDO::PARAM_STR);
-                $sth->bindParam(":logotipo", $data['logotipo'], PDO::PARAM_STR);
-                $sth->bindParam(":id_institucion", $id , PDO::PARAM_INT);
+                $sql = "UPDATE tratamiento 
+                        SET tratamiento = :tratamiento  
+                        WHERE id_tratamiento = :id_tratamiento";
+                $sth = $this-> _DB -> prepare($sql);
+                $sth->bindParam(":tratamiento", $data['tratamiento'], PDO::PARAM_STR);
+                $sth->bindParam(":id_tratamiento", $id , PDO::PARAM_STR);
                 $sth->execute();
                 $affected_rows = $sth->rowCount();
                 $this->_DB->commit();
@@ -69,9 +67,9 @@ class Institucion extends Sistema {
             $this->connect();
             $this->_DB->beginTransaction();
             try{
-                $sql = "DELETE FROM institucion WHERE id_institucion = :id_institucion";
+                $sql = "DELETE FROM tratamiento WHERE id_tratamiento = :id_tratamiento";
                 $sth = $this->_DB->prepare($sql);
-                $sth->bindParam(":id_institucion", $id, PDO::PARAM_INT);
+                $sth->bindParam(":id_tratamiento", $id, PDO::PARAM_INT);
                 $sth->execute();
                 $affected_rows = $sth->rowCount();
                 $this->_DB->commit();
