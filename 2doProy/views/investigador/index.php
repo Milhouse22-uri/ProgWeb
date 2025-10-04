@@ -1,6 +1,6 @@
 
 <h2>Investigadores</h2>
-<?php foreach ($instituciones as $institucion) : ?>
+<?php foreach ($investigadores as $investigador) : ?>
 
     <div class="row">
         <div class="col-lg-4">
