@@ -24,7 +24,6 @@
         <li class="nav-item"><a class="nav-link active" href="index.php">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href="catalogo.php">Catálogo</a></li>
         <li class="nav-item"><a class="nav-link" href="accesorios.php">Accesorios</a></li>
-        <li class="nav-item"><a class="nav-link" href="prueba_manejo.php">Prueba de Manejo</a></li>
         <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
         <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

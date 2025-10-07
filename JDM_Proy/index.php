@@ -9,7 +9,7 @@ include_once("./views/header.php");
       
       <!-- Slide 1 -->
       <div class="carousel-item active">
-        <img src="img/nissan_gtr_r34.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Nissan GTR">
+        <img src="img/autos_cata/nissan_gtr_r34.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Nissan GTR">
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
           <h1 class="fw-bold">Nissan GTR</h1>
           <p>Potencia y velocidad al máximo nivel.</p>
@@ -19,7 +19,7 @@ include_once("./views/header.php");
       
       <!-- Slide 2 -->
       <div class="carousel-item">
-        <img src="img/mazda_rx7_fd.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Mazda RX7">
+        <img src="img/autos_cata/mazda_rx7_fd.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Mazda RX7">
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
           <h1 class="fw-bold">Mazda RX7</h1>
           <p>El clásico rotativo japonés de los 90s.</p>
@@ -28,7 +28,7 @@ include_once("./views/header.php");
       
       <!-- Slide 3 -->
       <div class="carousel-item">
-        <img src="img/honda_civic_eg6.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Honda Civic">
+        <img src="img/autos_cata/honda_civic_eg6.png" class="d-block w-100" style="height: 80vh; object-fit: cover;" alt="Honda Civic">
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
           <h1 class="fw-bold">Honda Civic EG6</h1>
           <p>Ligero, confiable y con espíritu deportivo.</p>
@@ -64,7 +64,7 @@ include_once("./views/header.php");
       <!-- Auto 1 -->
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="img/nissan_gtr_r34.png" class="card-img-top" alt="Nissan GTR R34">
+          <img src="img/autos_cata/nissan_gtr_r34.png" class="card-img-top" alt="Nissan GTR R34">
           <div class="card-body">
             <h5 class="card-title">Nissan GTR R34</h5>
             <p class="card-text">Motor Twin-Turbo 2.6L · 280 HP</p>
@@ -75,7 +75,7 @@ include_once("./views/header.php");
       <!-- Auto 2 -->
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="img/honda_civic_eg6.png" class="card-img-top" alt="Honda Civic EG6">
+          <img src="img/autos_cata/honda_civic_eg6.png" class="card-img-top" alt="Honda Civic EG6">
           <div class="card-body">
             <h5 class="card-title">Honda Civic EG6</h5>
             <p class="card-text">Motor VTEC 1.6L · 170 HP</p>
@@ -86,7 +86,7 @@ include_once("./views/header.php");
       <!-- Auto 3 -->
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="img/mazda_rx7_fd.png" class="card-img-top" alt="Mazda RX7 FD">
+          <img src="img/autos_cata/mazda_rx7_fd.png" class="card-img-top" alt="Mazda RX7 FD">
           <div class="card-body">
             <h5 class="card-title">Mazda RX7 FD</h5>
             <p class="card-text">Motor Rotativo 1.3L · 280 HP</p>

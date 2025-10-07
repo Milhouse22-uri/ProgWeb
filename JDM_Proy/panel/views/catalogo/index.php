@@ -12,10 +12,10 @@
             <div class="col-10 col-md-4">
                 <div class="card h-100 shadow-sm">
                     <!-- Imagen -->
-                    <img src="./../img/accesorios/<?php echo $accesorios['imagen'];?>" 
+                    <img src="../imagen/accesorios/<?php echo $accesorios['imagen'];?>" 
                         class="card-img-top" 
                         alt="<?php echo $accesorios['nombre'];?>" 
-                        style="height:300px; object-fit:cover;">
+                        style="height:200px; object-fit:cover;">
                     
                     <!-- Cuerpo de la card -->
                     <div class="card-body">

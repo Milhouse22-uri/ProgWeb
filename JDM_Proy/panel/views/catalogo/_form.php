@@ -1,6 +1,6 @@
-<div class="container mt-4">
-    <h1>Nuevo Accesorio</h1>
-    <form method="POST" action="accesorios.php?action=create">
+ 
+<h1>Nuevo Accesorio</h1>
+<form method="POST" action="accesorios.php?action=create" class="p-4 bg-light rounded shadow-sm">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la Institucion</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Accesorio nuevo" required>
@@ -20,8 +20,4 @@
         <div class="mb-3">
             <input type="submit" class="btn btn-success" id="enviar" name="enviar" value="Guardar">
         </div>
-    
-    
-
-    </form>
-</div>
+</form>

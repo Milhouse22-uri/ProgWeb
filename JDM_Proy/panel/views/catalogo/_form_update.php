@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4">  
     <h1>Modificacion de Accesorio</h1>
     <form method="POST" action="accesorios.php?action=update&id=<?php echo $id; ?>">
         <div class="mb-3">
