@@ -23,7 +23,7 @@
 <?php foreach($data as $investigador): ?>
 <tr>
       <th scope="row"><?php echo $investigador['id_investigador'];?></th>
-      <td><img src="/2doProy/imagen/<?php echo $investigador['fotografia']; ?>" width="75" height="75" class="rounded-circle" alt="..."> </td>
+      <td><img src="/2doProy/imagen/investigador/<?php echo $investigador['fotografia']; ?>" width="75" height="75" class="rounded-circle" alt="..."> </td>
       <td><?php echo $investigador['primer_apellido'];?></td>
       <td><?php echo $investigador['segundo_apellido'];?></td>
       <td><?php echo $investigador['nombre'];?></td>

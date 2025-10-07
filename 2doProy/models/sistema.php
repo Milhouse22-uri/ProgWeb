@@ -9,5 +9,15 @@ class Sistema{
 
     }
 
+    function cargarFoto($carpeta){
+        if(move_uploaded_file($_FILES['fotografia']['tmp_name'],'../imagen/'.$carpeta.'/'.$_FILES['fotografia']['name'])){
+            return $_FILES['fotografia']['name'];
+
+        }else{
+            return null;
+        }
+
+    }
+
 }
 ?>

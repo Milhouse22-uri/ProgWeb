@@ -12,10 +12,11 @@ class Investigador extends Sistema {
             $sth->bindParam(":primer_apellido", $data['primer_apellido'], PDO::PARAM_STR);
             $sth->bindParam(":segundo_apellido", $data['segundo_apellido'], PDO::PARAM_STR);
             $sth->bindParam(":nombre", $data['nombre'], PDO::PARAM_STR);
-            $sth->bindParam(":fotografia", $data['fotografia'], PDO::PARAM_STR);
             $sth->bindParam(":id_institucion", $data['id_institucion'], PDO::PARAM_STR);
             $sth->bindParam(":semblanza", $data['semblanza'], PDO::PARAM_STR);
             $sth->bindParam(":id_tratamiento", $data['id_tratamiento'], PDO::PARAM_STR);
+            $fotografia = $this-> cargarFoto('investigador');
+            $sth -> bindParam(":fotografia", $fotografia, PDO::PARAM_STR);
             $sth->execute();
             $affected_rows = $sth->rowCount();
             $this->_DB->commit();
