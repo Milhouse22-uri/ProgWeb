@@ -1,5 +1,12 @@
 <h1>Modificar Investigador</h1>
-<form method="POST" action="investigador.php?action=update&id=<?php echo $id; ?>">
+<form method="POST" enctype="multipart/form-data" action="investigador.php?action=update&id=<?php echo $id; ?>">
+     <div class="text-center">
+        <img src="/2doProy/imagen/investigador/<?php echo $data['fotografia']; ?>" width="200" height="200" class="rounded-circle " alt="investigador">
+    </div>
+    <div class="mb-3">    
+        <label for="fotografia" class="form-label"></label>
+        <input type="file" class="form-control" id="fotografia" name="fotografia">
+    </div>
     <div class="mb-3">
         <label for="primer_apellido" class="form-label">Primer Apellido</label>
         <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" value="<?php echo $data['primer_apellido']; ?>"  placeholder="Escribe aqui el primer apellido" required>
@@ -12,10 +19,7 @@
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $data['nombre']; ?>"  placeholder="Escribe aqui el nombre" required>
     </div>
-    <div class="mb-3">
-        <label for="fotografia" class="form-label">Fotografia</label>
-        <input type="text" class="form-control" id="fotografia" name="fotografia" value="<?php echo $data['fotografia']; ?>"  placeholder="Escribe aqui el nombre de su fotografia" required>
-    </div>
+   
     <div class="mb-3">
         <label for="semblanza" class="form-label">Semblanza</label>
         <input type="text" class="form-control" id="semblanza" name="semblanza" value="<?php echo $data['semblanza']; ?>"  placeholder="Escribe aqui la sembranza" required>
@@ -25,13 +29,13 @@
         <select class="form-select" id="id_institucion" name="id_institucion" required="required">
            <?php foreach ($instituciones as $institucion):
               $selected = "";
-                if($data['institucion']==$institucion['id_institucion']){
+                if($data['id_institucion']==$institucion['id_institucion']){
                     $selected="selected";
                 }
             ?>
-                <option <?php echo $selected; ?> value="<?php echo $institucion['id_institucion']; ?>">
-                    <?php echo $institucion['institucion']; ?>
-                </option>
+            <option <?php echo $selected; ?> value="<?php echo $institucion['id_institucion']; ?>">
+                <?php echo $institucion['institucion']; ?>
+            </option>
             <?php endforeach; ?>
         </select>
     </div>
@@ -41,7 +45,7 @@
         <select class="form-select" id="id_tratamiento" name="id_tratamiento" required="required">
             <?php foreach($tratamiento as $tratamiento):
                 $selected = "";
-                if($data['tratamiento']==$tratamiento['id_tratamiento']){
+                if($data['id_tratamiento']==$tratamiento['id_tratamiento']){
                     $selected="selected";
                 }
             ?>

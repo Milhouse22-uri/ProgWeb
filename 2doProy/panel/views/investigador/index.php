@@ -23,13 +23,13 @@
 <?php foreach($data as $investigador): ?>
 <tr>
       <th scope="row"><?php echo $investigador['id_investigador'];?></th>
-      <td><img src="/2doProy/imagen/investigador/<?php echo $investigador['fotografia']; ?>" width="75" height="75" class="rounded-circle" alt="..."> </td>
+      <td><img src="../imagen/investigador/<?php echo $investigador['fotografia']; ?>" width="75" height="75" class="rounded-circle" alt="investigador"></td>
       <td><?php echo $investigador['primer_apellido'];?></td>
       <td><?php echo $investigador['segundo_apellido'];?></td>
       <td><?php echo $investigador['nombre'];?></td>
       <td><?php echo substr($investigador['semblanza'],0,70).'...';?></td>
-      <td><?php echo $investigador['id_institucion'];?></td>
-      <td><?php echo $investigador['id_tratamiento'];?></td>
+      <td><?php echo $investigador['institucion'];?></td>
+      <td><?php echo $investigador['tratamiento'];?></td>
       <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <a href="investigador.php?action=update&id=<?php echo $investigador['id_investigador'];?>" class="btn btn-warning">Editar</a>

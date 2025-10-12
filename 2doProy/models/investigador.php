@@ -15,7 +15,7 @@ class Investigador extends Sistema {
             $sth->bindParam(":id_institucion", $data['id_institucion'], PDO::PARAM_STR);
             $sth->bindParam(":semblanza", $data['semblanza'], PDO::PARAM_STR);
             $sth->bindParam(":id_tratamiento", $data['id_tratamiento'], PDO::PARAM_STR);
-            $fotografia = $this-> cargarFoto('investigador');
+            $fotografia = $this -> cargarFoto('investigador','fotografia');
             $sth -> bindParam(":fotografia", $fotografia, PDO::PARAM_STR);
             $sth->execute();
             $affected_rows = $sth->rowCount();
@@ -29,7 +29,9 @@ class Investigador extends Sistema {
 
     function read(){
         $this->connect();
-        $sth = $this->_DB->prepare("SELECT * FROM investigador");
+        $sth = $this->_DB->prepare("SELECT i.*,ins.institucion,t.tratamiento
+                                        FROM investigador i left join institucion ins on i.id_institucion = ins.id_institucion
+                                        left join tratamiento t on i.id_tratamiento = t.id_tratamiento");
         $sth->execute();
         $data = $sth->fetchAll();
         return $data;
@@ -37,7 +39,10 @@ class Investigador extends Sistema {
 
     function readOne($id){ 
         $this->connect();
-        $sth = $this->_DB->prepare("SELECT * FROM investigador WHERE id_investigador = :id_investigador"); 
+        $sth = $this->_DB->prepare("SELECT i.*,ins.institucion,t.tratamiento
+                                        FROM investigador i left join institucion ins on i.id_institucion = ins.id_institucion
+                                        left join tratamiento t on i.id_tratamiento = t.id_tratamiento
+                                        WHERE id_investigador = :id_investigador"); 
         $sth->bindParam(":id_investigador", $id, PDO::PARAM_INT);
         $sth->execute();
         $data = $sth->fetch(PDO::FETCH_ASSOC); //
@@ -53,17 +58,29 @@ class Investigador extends Sistema {
             $this->_DB->beginTransaction();
             try{
                 $sql = "UPDATE investigador 
-                        SET primer_apellido = :primer_apellido,segundo_apellido=:segundo_apellido,nombre=:nombre,fotografia=:fotografia,id_institucion=:id_institucion,semblanza=:semblanza,id_tratamiento=:id_tratamiento  
+                        SET primer_apellido = :primer_apellido,segundo_apellido=:segundo_apellido,nombre=:nombre,id_institucion=:id_institucion,semblanza=:semblanza,id_tratamiento=:id_tratamiento  
                         WHERE id_investigador = :id_investigador";
+                if(isset($_FILES['fotografia'])){
+                    if($_FILES['fotografia']['error'] == 0){
+                        $sql = "UPDATE investigador 
+                                SET primer_apellido = :primer_apellido,segundo_apellido=:segundo_apellido,nombre=:nombre,fotografia=:fotografia,id_institucion=:id_institucion,semblanza=:semblanza,id_tratamiento=:id_tratamiento  
+                                WHERE id_investigador = :id_investigador";
+                        $fotografia = $this-> cargarFoto('investigador','fotografia');
+                    }
+                }
                 $sth = $this-> _DB -> prepare($sql);
                 $sth->bindParam(":primer_apellido", $data['primer_apellido'], PDO::PARAM_STR);
                 $sth->bindParam(":segundo_apellido", $data['segundo_apellido'], PDO::PARAM_STR);
                 $sth->bindParam(":nombre", $data['nombre'], PDO::PARAM_STR);
-                $sth->bindParam(":fotografia", $data['fotografia'], PDO::PARAM_STR);
                 $sth->bindParam(":id_institucion", $data['id_institucion'], PDO::PARAM_STR);
                 $sth->bindParam(":semblanza", $data['semblanza'], PDO::PARAM_STR);
                 $sth->bindParam(":id_tratamiento", $data['id_tratamiento'], PDO::PARAM_STR);
                 $sth->bindParam(":id_investigador", $id , PDO::PARAM_STR);
+                if(isset($_FILES['fotografia'])){
+                    if($_FILES['fotografia']['error'] == 0){
+                        $sth -> bindParam(":fotografia", $fotografia, PDO::PARAM_STR);
+                    }
+                }
                 $sth->execute();
                 $affected_rows = $sth->rowCount();
                 $this->_DB->commit();

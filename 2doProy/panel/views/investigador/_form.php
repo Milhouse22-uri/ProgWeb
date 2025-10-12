@@ -2,7 +2,7 @@
 <form method="POST" enctype="multipart/form-data" action="investigador.php?action=create">
      <div class="mb-3">
         <label for="fotografia" class="form-label">Fotografia</label>
-        <input type="file" class="form-control" id="fotografia" name="fotografia" placeholder="fotografia" required>
+        <input type="file" class="form-control" id="fotografia" name="fotografia" required>
     </div>
     
     <div class="mb-3">

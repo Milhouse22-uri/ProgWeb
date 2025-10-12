@@ -16,7 +16,7 @@
     <?php foreach($data as $institucion): ?>
         <tr>
             <th scope="row"><?php echo $institucion['id_institucion'];?></th>
-            <td><img src="../imagen/instituciones/<?php echo $institucion['logotipo']?>" width="75" height="75" class="rounded-cricle"></td>
+            <td><img src="../imagen/institucion/<?php echo $institucion['logotipo']?>" width="75" height="75" class="rounded-cricle"></td>
             <td><?php echo $institucion['institucion']; ?></td>
             <td>
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
