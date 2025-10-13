@@ -9,7 +9,7 @@ class Sistema{
 
     }
 
-     function cargarFoto($carpeta,$nombre) {
+    function cargarFoto($carpeta,$nombre) {
         $tipos = array('image/gif','image/jpeg','image/png','image/jpg');
         $maximo = 1000 * 1024; 
         if(isset($_FILES[$nombre])){

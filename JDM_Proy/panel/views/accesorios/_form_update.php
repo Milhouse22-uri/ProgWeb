@@ -1,8 +1,15 @@
 <div class="container mt-4">
     <h1>Modificacion de Accesorio</h1>
-    <form method="POST" action="accesorios.php?action=update&id=<?php echo $id; ?>">
+    <form method="POST" enctype="multipart/form-data" action="accesorios.php?action=update&id=<?php echo $id; ?>">
+        <div class="text-center">
+            <img src="/JDM_Proy/img/accesorios/<?php echo $data['imagen']; ?>" width="200" height="200" class="rounded-circle " alt="accesorios">
+        </div>
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre de la Institucion</label>
+            <label for="imagen" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="imagen" name="imagen" value="<?php echo $data['imagen']; ?>" placeholder="imagen.png">
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del Accesorio</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $data['nombre']; ?>" placeholder="Accesorio nuevo" required>
         </div>
         <div class="mb-3">
@@ -12,10 +19,6 @@
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion</label>
             <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $data['descripcion']; ?>" placeholder="Descripcion del accesorio">
-        </div>
-        <div class="mb-3">
-            <label for="imagen" class="form-label">Imagen</label>
-            <input type="text" class="form-control" id="imagen" name="imagen" value="<?php echo $data['imagen']; ?>" placeholder="imagen.png">
         </div>
         
         <div class="mb-3">

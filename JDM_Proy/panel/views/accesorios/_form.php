@@ -1,8 +1,8 @@
 <div class="container mt-4">
     <h1>Nuevo Accesorio</h1>
-    <form method="POST" action="accesorios.php?action=create">
+    <form method="POST" enctype="multipart/form-data" action="accesorios.php?action=create">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre de la Institucion</label>
+            <label for="nombre" class="form-label">Nombre de Accesorio</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Accesorio nuevo" required>
         </div>
         <div class="mb-3">
@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="imagen" class="form-label">Imagen</label>
-            <input type="text" class="form-control" id="imagen" name="imagen" placeholder="imagen.png">
+            <input type="file" class="form-control" id="imagen" name="imagen" placeholder="imagen.png">
         </div>
         <div class="mb-3">
             <input type="submit" class="btn btn-success" id="enviar" name="enviar" value="Guardar">

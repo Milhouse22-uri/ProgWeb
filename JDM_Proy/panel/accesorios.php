@@ -10,7 +10,7 @@ switch ($action){
             $data['nombre']=$_POST['nombre'];
             $data['precio']=$_POST['precio'];
             $data['descripcion']=$_POST['descripcion'];
-            $data['imagen']=$_POST['imagen'];
+            $data['imagen']=$_FILES['imagen']['name'];
             $row = $app-> create($data);
             if($row){
                 $alerta['mensaje'] = "Accesoro creado correctamente";
@@ -34,7 +34,6 @@ switch ($action){
             $data['nombre']=$_POST['nombre'];
             $data['precio']=$_POST['precio'];
             $data['descripcion']=$_POST['descripcion'];
-            $data['imagen']=$_POST['imagen'];
             $id = $_GET['id'];
             $row = $app-> update($data,$id);
             if($row){

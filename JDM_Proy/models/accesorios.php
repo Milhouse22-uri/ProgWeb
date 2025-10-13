@@ -11,7 +11,8 @@ class Accesorios extends Sistema {
             $sth->bindParam(":nombre", $data['nombre'], PDO::PARAM_STR);
             $sth->bindParam(":precio", $data['precio']); // numérico, no poner array ni PARAM_STR
             $sth->bindParam(":descripcion", $data['descripcion'], PDO::PARAM_STR);
-            $sth->bindParam(":imagen", $data['imagen'], PDO::PARAM_STR);
+            $imagen = $this -> cargarFoto('accesorios','imagen');
+            $sth->bindParam(":imagen", $imagen, PDO::PARAM_STR);
             $sth->execute();
             $affected_rows = $sth->rowCount();
             $this->_DB->commit();
@@ -39,35 +40,65 @@ class Accesorios extends Sistema {
         return $data;
     }
 
-    function update($data, $id){
-        if (!is_numeric($id)){
-            return null;
-        }
-        if ($this->validate($data)){
-            $this->connect();
-            $this->_DB->beginTransaction();
-            try{
-                $sql = "UPDATE accesorios
-                        SET nombre = :nombre,precio = :precio,descripcion = :descripcion,imagen = :imagen 
-                        WHERE id_accesorio = :id_accesorio";
-                $sth = $this->_DB-> prepare($sql);
-                $sth->bindParam(":nombre", $data['nombre'], PDO::PARAM_STR);
-                $sth->bindParam(":precio", $data['precio']); // numérico, no poner array ni PARAM_STR
-                $sth->bindParam(":descripcion", $data['descripcion'], PDO::PARAM_STR);
-                $sth->bindParam(":imagen", $data['imagen'], PDO::PARAM_STR);
-                $sth->bindParam(":id_accesorio", $id , PDO::PARAM_INT);
-                $sth->execute();
-                $affected_rows = $sth->rowCount();
-                $this->_DB->commit();
-                return $affected_rows;
-            }catch (Exception $e){
-                $this->_DB->rollBack();
-                throw $e;
-            }
-        }
+    function update($data, $id) {
+    if (!is_numeric($id)) {
         return null;
-        
     }
+
+    $this->connect();
+    $this->_DB->beginTransaction();
+
+    try {
+        $nuevaImagen = null;
+
+        // Si se sube una nueva imagen, la procesamos
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+            $nuevaImagen = $this->cargarFoto('accesorios', 'imagen');
+        }
+
+        // Armamos el SQL dependiendo si hay imagen o no
+        if ($nuevaImagen) {
+            $sql = "UPDATE accesorios 
+                    SET nombre = :nombre, 
+                        precio = :precio, 
+                        descripcion = :descripcion, 
+                        imagen = :imagen 
+                    WHERE id_accesorio = :id_accesorio";
+        } else {
+            $sql = "UPDATE accesorios 
+                    SET nombre = :nombre, 
+                        precio = :precio, 
+                        descripcion = :descripcion 
+                    WHERE id_accesorio = :id_accesorio";
+        }
+
+        $sth = $this->_DB->prepare($sql);
+
+        // Parámetros obligatorios
+        $sth->bindParam(":nombre", $data['nombre'], PDO::PARAM_STR);
+        $sth->bindParam(":precio", $data['precio']);
+        $sth->bindParam(":descripcion", $data['descripcion'], PDO::PARAM_STR);
+        $sth->bindParam(":id_accesorio", $id, PDO::PARAM_INT);
+
+        // Solo se agrega si existe una imagen nueva
+        if ($nuevaImagen) {
+            $sth->bindParam(":imagen", $nuevaImagen, PDO::PARAM_STR);
+        }
+
+        $sth->execute();
+
+        $affected_rows = $sth->rowCount();
+        $this->_DB->commit();
+        return $affected_rows;
+
+    } catch (Exception $e) {
+        $this->_DB->rollBack();
+        throw $e;
+    }
+
+    return null;
+}
+
 
     function delete($id){
         if (is_numeric($id)){
