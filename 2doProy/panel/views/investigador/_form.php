@@ -21,6 +21,16 @@
     </div>
 
     <div class="mb-3">
+        <label for="correo" class="form-label">Correo electronico</label>
+        <input type="email" class="form-control" id="correo" name="correo" placeholder="Escribe aqui el nombre" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="contrasena" class="form-label">Contraseña del Investigador</label>
+        <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+    </div>
+
+    <div class="mb-3">
         <label for="semblanza" class="form-label">Semblanza</label>
         <input type="text" class="form-control" id="semblanza" name="semblanza" placeholder="Escribe aqui la sembranza" required>
     </div>

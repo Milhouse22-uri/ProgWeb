@@ -105,5 +105,18 @@ class Institucion extends Sistema {
         return true; //aqui puedes meter validaciones reales
     }
 
+    function reporteInstitucionesInvestigadores(){
+        $this ->connect();
+        $sth = $this -> _DB -> prepare("SELECT i.institucion, COUNT(inv.id_investigador) AS cantidad_investigadores
+                                            FROM institucion i LEFT JOIN investigador inv ON i.id_institucion = inv.id_institucion
+                                            GROUP BY i.institucion ORDER BY cantidad_investigadores DESC;");
+        $sth ->execute();
+        if($sth->rowCount()>0){
+            return $sth->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            return null;
+        }
+    }
+
 }
 ?>

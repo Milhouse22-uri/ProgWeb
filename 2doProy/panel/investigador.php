@@ -3,24 +3,20 @@ require_once("../models/investigador.php");
 require_once("../models/institucion.php");
 require_once("../models/tratamiento.php");
 
-$app = new Investigador();
+
 $appInstitucion = new Institucion();
 $appTratamiento = new Tratamiento();
 $instituciones = $appInstitucion->read();
 $tratamiento = $appTratamiento->read();
+$app = new Investigador();
+$app -> checarRol('Investigador');
 $action = isset($_GET['action']) ? $_GET['action'] : 'read';
 $data = array();
 include_once("./views/header.php");
 switch ($action){
     case 'create':
         if(isset($_POST['enviar'])){
-            $data['primer_apellido']=$_POST['primer_apellido'];
-            $data['segundo_apellido']=$_POST['segundo_apellido'];
-            $data['nombre']=$_POST['nombre'];
-            $data['id_institucion']=$_POST['id_institucion'];
-            $data['semblanza']=$_POST['semblanza'];
-            $data['id_tratamiento']=$_POST['id_tratamiento'];
-            $data['fotografia'] = $_FILES['fotografia']['name'];
+            $data=$_POST;
             $row = $app-> create($data);
             if($row){
                 $alerta['mensaje'] = "Invesigador creado correctamente";
@@ -41,12 +37,7 @@ switch ($action){
 
     case 'update':
         if(isset($_POST['enviar'])){
-            $data['primer_apellido']=$_POST['primer_apellido'];
-            $data['segundo_apellido']=$_POST['segundo_apellido'];
-            $data['nombre']=$_POST['nombre'];
-            $data['id_institucion']=$_POST['id_institucion'];
-            $data['semblanza']=$_POST['semblanza'];
-            $data['id_tratamiento']=$_POST['id_tratamiento'];
+            $data=$_POST;
             $id = $_GET['id'];
             $row = $app-> update($data,$id);
             if($row){
